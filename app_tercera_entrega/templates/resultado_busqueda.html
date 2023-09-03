@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block contenido_variable %}
+
+
+
+    <p>Estás buscando el item : <b><span style="font-style: italic;">{{item_nombre}}</span> </b>  </p>
+
+ 
+            {% for resultado in resultados %}
+                
+            <li> <b>Valor:</b> <br>{{ resultado.monto }}</li>
+            <li><b>Pertenece a la categoría:</b><br>{{ resultado.categoria }}</li>
+            <li><b>Fecha del Gasto:</b><br>{{ resultado.fecha }}</li>
+
+            {% endfor %}
+
+    
+{% endblock contenido_variable %}

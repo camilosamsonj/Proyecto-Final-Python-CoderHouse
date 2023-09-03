@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block contenido_variable %}
+    <h4>Categorías de Gastos</h4>
+ 
+    <b><p>Actualmente hay registradas las siguientes categorías:</p></b>
+
+    <ul>
+        {% for categoria in lista_categorias %} 
+            <li>{{categoria.nombre}} <p style="font-style: italic;">{{categoria.descripcion}}</p></li>
+        {% endfor %}
+    </ul>   
+    
+
+{% endblock contenido_variable %}
