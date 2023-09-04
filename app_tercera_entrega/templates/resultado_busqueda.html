@@ -2,18 +2,40 @@
 
 {% block contenido_variable %}
 
+    <div class="header"> <h4 class="titulos_formularios">Resultado de tu búsqueda</h4> </div>
+    
+    <div class="contenido">
+        <p style="display: inline;" class="titulos_formularios">Estás buscando el item :</p>
+        <span class="item_destacado">"{{item_nombre}}"</span> 
+    </div>
+        
+    
+    <div class="contenido">
+        {% for resultado in resultados %}
+        <ul class="lista_resultados">   
 
+            <li class="objetos_lista_resultados"> 
+            <span> <u>Valor:</u> <span class="item_destacado"> {{ resultado.monto }}</span></span>
+            </li> 
 
-    <p>Estás buscando el item : <b><span style="font-style: italic;">{{item_nombre}}</span> </b>  </p>
+            <li class="objetos_lista_resultados"> 
+            <span> <u>Categoría: </u> <span class="item_destacado"> {{ resultado.categoria }}</span></span>
+            </li> 
 
- 
-            {% for resultado in resultados %}
+            <li class="objetos_lista_resultados"> 
+            <span> <u>Fecha:</u> <span class="item_destacado"> {{ resultado.fecha }}</span></span>
+            </li> 
+        
+        </ul>     
                 
-            <li> <b>Valor:</b> <br>{{ resultado.monto }}</li>
-            <li><b>Pertenece a la categoría:</b><br>{{ resultado.categoria }}</li>
-            <li><b>Fecha del Gasto:</b><br>{{ resultado.fecha }}</li>
+        {% endfor %}
 
-            {% endfor %}
+            </div>
+
+            <div class="footer">
+                <a class="boton" href="{% url 'BusquedaItems'%}">Buscar Otro</a>
+            </div>
+          
 
     
 {% endblock contenido_variable %}

@@ -120,14 +120,3 @@ def buscar(request):
     
     return HttpResponse(respuesta)
 
-
-# def lista_elementos_por_categoria(request, categoria_id):
-#     categoria = get_object_or_404(CategoriaGasto, pk=categoria_id)
-#     elementos = ItemGasto.objects.filter(categoria=categoria)
-    
-#     return render(request, 'lista_elementos_por_categoria.html', {'categoria': categoria, 'elementos': elementos})
-    
-    
-
-
-

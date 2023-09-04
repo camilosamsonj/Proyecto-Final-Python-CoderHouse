@@ -2,19 +2,31 @@
 
 {% block contenido_variable %}
 
+<div class="caja">
 
-   
+    <div class="header">
+        <h4 class="titulos_formularios">
+            Registrar Categorías
+        </h4>
+    </div>
+    <p class="titulos_formularios" >Ingresa los datos solicitados para crear una nueva categoría: </p>
 
-    <form action="" method="POST"> {% csrf_token %} 
+    <div class="contenido">
+        <form action="" method="POST"> {% csrf_token %} 
        
-        <table>
-            {{ miFormulario.as_table}}
-        </table>
+            <table>
+                {{ miFormulario.as_table}}
+            </table>
+            <br>
+            <div class="footer"
+            ><input class="boton" type="submit" value="Guardar">
+            </div>
 
-        <input type="submit" value="Guardar">
+        </form>
+    </div>
+    
 
-    </form>
-
+</div>
 
 
 {% endblock contenido_variable %}

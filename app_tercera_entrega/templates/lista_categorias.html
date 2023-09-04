@@ -1,15 +1,23 @@
 {% extends 'base.html' %}
 
 {% block contenido_variable %}
-    <h4>Categorías de Gastos</h4>
- 
-    <b><p>Actualmente hay registradas las siguientes categorías:</p></b>
+    
+   <div class="caja">
+    <div class="header">
+        <h4 class="titulos_formularios">Categorías de Gastos</h4>
+    </div>
 
-    <ul>
+    <div class="contenido"> <ul>
         {% for categoria in lista_categorias %} 
             <li>{{categoria.nombre}} <p style="font-style: italic;">{{categoria.descripcion}}</p></li>
         {% endfor %}
-    </ul>   
-    
+    </ul>   </div>
+
+    <div class="footer">
+    <a class="boton" href="{% url 'FormularioCategorias'%}">Nueva Categoría</a>
+    <a class="boton" href="{% url 'FormularioCategorias'%}">Eliminar Categoría</a>
+    </div>
+   </div>
+
 
 {% endblock contenido_variable %}

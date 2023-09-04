@@ -2,17 +2,27 @@
 
 {% block contenido_variable %}
 
-<h3>Registro de Gastos </h3>
+<div class="header">
+    <h4 class="titulos_formularios">Registro de Gastos</h4>
+</div>
 </br>
-    <form action="" method="POST"> {% csrf_token %} 
+<div class="contenido">
+
+<form action="" method="POST"> {% csrf_token %} 
        
         <table>
             {{ miFormulario.as_table}}
         </table>
-
-        <input type="submit" value="Guardar">
+        <br>
+        <div class="footer">
+            <input class="boton" type="submit" value="Guardar">
+        </div>
+        
 
     </form>
+
+</div>
+    
 
 
 

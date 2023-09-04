@@ -8,7 +8,7 @@ class CategoriaGasto(models.Model):
     descripcion = models.CharField(max_length=60)
     
     def __str__(self):
-        return f'Categoría: {self.nombre}'
+        return f'{self.nombre}'
 
 class ItemGasto(models.Model):
     
@@ -19,7 +19,6 @@ class ItemGasto(models.Model):
     
     def __str__(self):
         return self.nombre
-
 
 class MetaAhorro(models.Model):
     nombre = models.CharField(max_length=100)

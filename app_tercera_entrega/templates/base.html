@@ -24,38 +24,42 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'FormularioItems'%}">Ingresar Nuevo Gasto</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'FormularioMetas'%}">Metas de Ahorro</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'BusquedaItems' %}">Buscar un Item</a></li>
-
-
-                        
-                     
                     </ul>
                 </div>
             </div>
         </nav>
+
         <!-- Header-->
         <header class="bg-primary bg-gradient text-white">
             <div class="container px-4 text-center">
                 <h1 class="fw-bolder">App de Control de Gastos</h1>
-                <p class="lead">Camilo Samson, Camada _____ Python, CoderHouse</p>
-                <a class="btn btn-lg btn-light" href="#about">Start scrolling!</a>
+                <p class="lead">Camilo Samson, Camada <strong>43875</strong> Python, CoderHouse</p>
+                <!-- <a class="btn btn-lg btn-light" href="#about">Start scrolling!</a> -->
             </div>
         </header>
 
        
         <!-- Contenido Variable -->
-        <section class="bg-light" id="services">
+        <div class="caja">
             
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
+            <div class="container px-4"> 
+                
+                <div class="row gx-4 justify-content-center"> 
 
                     {% block contenido_variable %}
-            
-                    {% endblock contenido_variable %}
+           
 
+         
+                    {% endblock contenido_variable %}
+        
                 </div>
             </div>
+        </div>        
+        
 
-        </section>
+          
+    
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
