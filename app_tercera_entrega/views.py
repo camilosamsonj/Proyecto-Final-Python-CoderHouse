@@ -22,7 +22,7 @@ def formulario_categorias(request):
             datos_formulario = miFormulario.cleaned_data
             categoria = CategoriaGasto(nombre=datos_formulario['nombre'], descripcion=datos_formulario['descripcion'])
             categoria.save()
-            return render(request, "inicio.html")
+            return render(request, "lista_categorias.html")
         
     else:
         
@@ -74,12 +74,6 @@ def categorias(request):
     return render(request, 'lista_categorias.html', {'lista_categorias': categorias})
 
 
-def gastos_por_categorias(request):
-    
-    categorias = CategoriaGasto.objects.all()
-    
-    return render(request, 'lista_categorias.html', {'lista_categorias': categorias})
-
 
 def formulario_meta_ahorro(request):
 
@@ -120,3 +114,11 @@ def buscar(request):
     
     return HttpResponse(respuesta)
 
+
+
+
+# def gastos_por_categorias(request):
+    
+#     categorias = CategoriaGasto.objects.all()
+    
+#     return render(request, 'lista_categorias.html', {'lista_categorias': categorias})

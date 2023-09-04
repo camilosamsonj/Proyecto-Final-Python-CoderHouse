@@ -353,10 +353,13 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 button,
@@ -486,6 +489,16 @@ progress {
   display: none !important;
 }
 /*Estilos propios, no correspondientes al Template Base de StartBoostrap */
+
+header {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(141,145,25,1) 0%, rgba(125,152,50,1) 11%, rgba(71,164,19,1) 23%, rgba(96,166,99,1) 32%, rgba(68,180,145,1) 47%, rgba(57,185,163,1) 67%, rgba(37,194,195,1) 74%, rgba(19,203,225,1) 87%, rgba(0,212,255,1) 100%);
+}
+
+#titulo_principal{
+  color: #00FFFF;
+}
+
 .boton {
   display: inline-block;
   padding: 10px 20px;
@@ -504,6 +517,17 @@ progress {
 
 .boton:hover {
   background-color: #0056b3;
+}
+
+.boton_input {
+  width: 20%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .titulos_formularios {

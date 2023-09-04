@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 
 {% block contenido_variable %}
-    
-   <div class="caja">
+
+    <div class="contenido">
     <div class="header">
         <h4 class="titulos_formularios">Categorías de Gastos</h4>
     </div>
 
-    <div class="contenido"> <ul>
+     <ul class="lista_resultados">
         {% for categoria in lista_categorias %} 
-            <li>{{categoria.nombre}} <p style="font-style: italic;">{{categoria.descripcion}}</p></li>
+            <li class="objetos_lista_resultados" ><span class="item_destacado">{{categoria.nombre}}</span>: <p style="font-style: italic;">{{categoria.descripcion}}</p></li>
         {% endfor %}
     </ul>   </div>
 
     <div class="footer">
-    <a class="boton" href="{% url 'FormularioCategorias'%}">Nueva Categoría</a>
-    <a class="boton" href="{% url 'FormularioCategorias'%}">Eliminar Categoría</a>
+
+       
+    <a class="boton_input" href="{% url 'FormularioCategorias'%}">Nueva Categoría</a>
     </div>
-   </div>
 
 
 {% endblock contenido_variable %}
