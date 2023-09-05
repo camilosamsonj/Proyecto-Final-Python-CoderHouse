@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block contenido_variable %}
+
+    <div class="contenido">
+    <div class="header">
+        <h4 class="titulos_formularios">Lista de gastos</h4>
+    </div>
+
+     <ul class="lista_resultados">
+        {% for gasto in gastos %} 
+            <ul>
+                <li class="objetos_lista_resultados" > <span> <u>Item Gasto:</u> </span><p class="item_destacado">{{gasto.nombre}}</p>
+                    <span> <u>Valor:</u> </span><p class="item_destacado">{{gasto.monto}}</p>
+                    <span><u>Categoria:</u> </span><p class="item_destacado">{{gasto.categoria}}</p>
+                    <span><u>Fecha:</u> </span><p class="item_destacado">{{gasto.fecha}}</p>
+                </li>
+
+            </ul>
+        {% endfor %}
+    </ul>   </div>
+
+    <div class="footer">
+
+       
+    <a class="boton_input" href="{% url 'FormularioItems'%}">Registrar Gasto</a>
+    </div>
+
+
+{% endblock contenido_variable %}

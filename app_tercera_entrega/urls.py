@@ -10,5 +10,6 @@ urlpatterns = [
     path('formulario-metas/', formulario_meta_ahorro, name='FormularioMetas' ),
     path('busqueda-items/', busqueda_items, name='BusquedaItems' ),
     path('busqueda-items/buscar/', buscar, name='buscar'),
+    path('lista-gastos/', lista_gastos, name='ListaGastos'),
 
 ]

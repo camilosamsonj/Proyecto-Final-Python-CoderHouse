@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 
@@ -22,7 +22,8 @@ def formulario_categorias(request):
             datos_formulario = miFormulario.cleaned_data
             categoria = CategoriaGasto(nombre=datos_formulario['nombre'], descripcion=datos_formulario['descripcion'])
             categoria.save()
-            return render(request, "lista_categorias.html")
+            return redirect("Categorias")
+            
         
     else:
         
@@ -57,7 +58,7 @@ def formulario_items_gastos(request):
             fecha=datos_formulario['fecha']
             )
             item_gasto.save()
-            return render(request, "lista_categorias.html")
+            return redirect("ListaGastos")
         
         
     else:
@@ -87,7 +88,7 @@ def formulario_meta_ahorro(request):
             datos_formulario = miFormulario.cleaned_data
             meta_ahorro = MetaAhorro(nombre=datos_formulario['nombre'], monto_objetivo=datos_formulario['monto_objetivo'], fecha_limite=datos_formulario['fecha_limite'])
             meta_ahorro.save()
-            return render(request, "inicio.html")
+            return redirect("ListaGastos")
         
     else:
         
@@ -117,8 +118,8 @@ def buscar(request):
 
 
 
-# def gastos_por_categorias(request):
+def lista_gastos(request):
     
-#     categorias = CategoriaGasto.objects.all()
+    gastos = ItemGasto.objects.all()
     
-#     return render(request, 'lista_categorias.html', {'lista_categorias': categorias})
+    return render(request, 'lista_gastos.html', {'gastos': gastos})
