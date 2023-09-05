@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(CategoriaGasto)
 admin.site.register(ItemGasto)
+admin.site.register(MetaAhorro)
