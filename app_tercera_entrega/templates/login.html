@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contenido_variable %}
+
+    <div class="header"> <h4 class="titulos_formularios">Buscar Elementos</h4> </div>
+    <p class="titulos_formularios">
+        Ingresa el nombre del elemento que quieres buscar: </b>
+    </p>
+
+    <div class="contenido">
+
+    <form action="" method="POST"> 
+    
+        {% csrf_token %}
+
+        {{form.as_p}}
+        
+        <button type="submit">Iniciar Sesión</button>
+
+    </form>
+
+    </div>
+
+{% endblock contenido_variable %}
