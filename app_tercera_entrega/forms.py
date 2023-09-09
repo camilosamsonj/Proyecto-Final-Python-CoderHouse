@@ -1,5 +1,5 @@
 from django import forms 
-from .models import ItemGasto, CategoriaGasto, MetaAhorro
+from .models import ItemGasto, CategoriaGasto, MetaAhorro, Contactos
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .views import *
@@ -57,6 +57,19 @@ class UserRegisterForm(UserCreationForm):
         # con esto quitamos los mensajes de ayuda.
         
         help_texts = {k:'' for k in fields}
+        
+    
+class FormularioContactos(forms.ModelForm):
+    
+    nombre = forms.CharField(max_length=100)
+    numero = forms.IntegerField()
+    correo = forms.EmailField()
+    
+    class Meta:
+        model = Contactos
+        fields = ['nombre', 'numero', 'correo']
+                    
+        
     
 
         

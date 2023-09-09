@@ -26,4 +26,12 @@ class MetaAhorro(models.Model):
     fecha_limite = models.DateField()
         
     
+
+class Contactos(models.Model):
+    
+    nombre = models.CharField(max_length=100)
+    numero = models.IntegerField()
+    correo = models.EmailField()
+    
+
     

@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
-from .forms import CategoriaGastoFormulario, ItemGastoFormulario, MetaAhorroFormulario, UserRegisterForm
+from .forms import CategoriaGastoFormulario, ItemGastoFormulario, MetaAhorroFormulario, UserRegisterForm, FormularioContactos
 from .models import *
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -180,4 +180,26 @@ def registro(request):
     return render(request, 'registro.html', {'form': form})
     
     
+def hola_conejo(request):
     
+  return render(request, 'hola_conejo.html')
+
+
+def formulario_contactos(request):
+    
+    if request.method == 'POST':
+        
+        miFormulario = FormularioContactos(request.POST)
+        
+        if miFormulario.is_valid():
+            
+            datos_formulario = miFormulario.cleaned_data
+            contacto = Contactos(nombre=datos_formulario['nombre'], numero=datos_formulario['numero'], correo=datos_formulario['correo'])
+            contacto.save()
+            return redirect("FormularioContacto")
+        
+    else:
+        
+        miFormulario = FormularioContactos()
+    
+    return render(request, 'formulario_contactos.html', {'miFormulario': miFormulario})

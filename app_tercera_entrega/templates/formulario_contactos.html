@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block contenido_variable %}
+
+    <div class="header">
+        <h4 class="titulos_formularios">Formulario de Contactos</h4>
+    </div>
+
+    <div class="contenido">
+            <form action="" method="POST"> {% csrf_token %} 
+       
+        <table>
+            {{ miFormulario.as_table}}
+        </table>
+        <br>
+        <div class="footer">
+            
+            <input class="boton_input" type="submit" value="Guardar">
+
+        </div>
+    </form>
+    </div>
+
+
+
+{% endblock contenido_variable %}
