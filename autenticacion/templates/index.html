@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block contenido_variable %}
+
+<fieldset>
+    <legend> Escoge una opción </legend>
+
+    <button> <a href="{% url 'Registro'%}">Registrar Nuevo Usuario</a></button>
+    <button> <a href="{% url 'Login'%}">Iniciar Sesión</a></button>
+    <button> <a href="{% url 'Registro'%}"></a></button>
+
+</fieldset>
+
+
+{% endblock contenido_variable %}

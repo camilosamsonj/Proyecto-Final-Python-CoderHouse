@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block contenido_variable %}
+
+<div>
+<fieldset style="max-width: 70%M">
+    <legend> <em>Crear nuevo usuario</em> </legend>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+    
+        {{miFormulario.as_p}}
+        <button type="submit"> Regístrate </button>
+    
+    </form> 
+</fieldset>
+</div>
+
+
+
+{% endblock contenido_variable %}

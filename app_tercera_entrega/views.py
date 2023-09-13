@@ -1,9 +1,9 @@
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
-from .forms import CategoriaGastoFormulario, ItemGastoFormulario, MetaAhorroFormulario, UserRegisterForm, FormularioContactos
+from .forms import CategoriaGastoFormulario, ItemGastoFormulario, MetaAhorroFormulario
 from .models import *
 from .forms import *
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
@@ -127,61 +127,4 @@ def lista_gastos(request):
     
     return render(request, 'lista_gastos.html', {'gastos': gastos})
 
-
-def login_request(request):
     
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data = request.POST)
-        
-        if form.is_valid():
-            usuario = form.cleaned_data.get('username')
-            contra = form.cleaned_data.get('password')
-            
-            user = authenticate(username=usuario, password=contra)
-            
-            
-            if user is not None:
-                login(request, user)
-                
-                messages.success(request, f'Bienvenido {usuario}')
-                return render(request, 'inicio.html', {})
-            
-            else: 
-                return render(request, 'inicio.html', {'mensaje':'Error datos incorrectos'})
-        
-        else:
-            return render(request, 'inicio.html', {'mensaje': 'Error, formulario erróneo'})
-        
-    else:
-        
-        form = AuthenticationForm()
-        
-        return render(request, 'login.html', {'form':form})
-    
-
-
-def registro(request):
-    
-    if request.method == 'POST':
-        
-        # form = UserCreationForm(request.POST)
-        form = UserRegisterForm(request.POST)
-        
-        if form.is_valid():
-            
-            username = form.cleanead_data['username']
-            form.save()
-            return render(request, 'inicio.html', {'mensaje': 'Usuario Creado Con Éxito'})
-        
-    else: 
-            # form = UserCreationForm()
-            form = UserRegisterForm()
-            
-    return render(request, 'registro.html', {'form': form})
-    
-    
-def hola_conejo(request):
-    
-  return render(request, 'hola_conejo.html')
-
-
