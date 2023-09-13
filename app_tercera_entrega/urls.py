@@ -15,9 +15,6 @@ urlpatterns = [
     path('lista-gastos/', lista_gastos, name='ListaGastos'),
     path('login', login_request, name='Login'),
     path('registrar', registro, name='Registro'),
-    path('logout', LogoutView.as_view(template_name='logout.html'), name='Logout'),
-    path('hola-conejo', hola_conejo, name='HolaConejo' ),
-    path('formulario-contacto', formulario_contactos, name='FormularioContacto'),
-    
+    path('logout', LogoutView.as_view(template_name='logout.html'), name='Logout'),   
 
 ]

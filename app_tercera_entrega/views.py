@@ -185,21 +185,3 @@ def hola_conejo(request):
   return render(request, 'hola_conejo.html')
 
 
-def formulario_contactos(request):
-    
-    if request.method == 'POST':
-        
-        miFormulario = FormularioContactos(request.POST)
-        
-        if miFormulario.is_valid():
-            
-            datos_formulario = miFormulario.cleaned_data
-            contacto = Contactos(nombre=datos_formulario['nombre'], numero=datos_formulario['numero'], correo=datos_formulario['correo'])
-            contacto.save()
-            return redirect("FormularioContacto")
-        
-    else:
-        
-        miFormulario = FormularioContactos()
-    
-    return render(request, 'formulario_contactos.html', {'miFormulario': miFormulario})

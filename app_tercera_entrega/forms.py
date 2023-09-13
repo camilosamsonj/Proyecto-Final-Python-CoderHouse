@@ -58,16 +58,8 @@ class UserRegisterForm(UserCreationForm):
         
         help_texts = {k:'' for k in fields}
         
-    
-class FormularioContactos(forms.ModelForm):
-    
-    nombre = forms.CharField(max_length=100)
-    numero = forms.IntegerField()
-    correo = forms.EmailField()
-    
-    class Meta:
-        model = Contactos
-        fields = ['nombre', 'numero', 'correo']
+
+
                     
         
     
