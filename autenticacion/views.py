@@ -1,8 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import FormularioRegistroUsuarios
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -56,4 +57,5 @@ def registro(request):
             miFormulario = FormularioRegistroUsuarios()
             
     return render(request, 'registro.html', {'miFormulario': miFormulario})
+    
     

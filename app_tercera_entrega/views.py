@@ -6,13 +6,14 @@ from .forms import *
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def inicio(request):
 
     return render(request, "inicio.html")
 
-
+@login_required 
 def formulario_categorias(request):
 
     
@@ -23,7 +24,8 @@ def formulario_categorias(request):
         if miFormulario.is_valid():
             
             datos_formulario = miFormulario.cleaned_data
-            categoria = CategoriaGasto(nombre=datos_formulario['nombre'], descripcion=datos_formulario['descripcion'])
+            usuario = request.user
+            categoria = CategoriaGasto(nombre=datos_formulario['nombre'], descripcion=datos_formulario['descripcion'], usuario=usuario ) # Asociamos la categoria de gasto al usuario actual
             categoria.save()
             return redirect("Categorias")
             
@@ -35,6 +37,9 @@ def formulario_categorias(request):
     return render(request, 'formulario_categorias.html', {'miFormulario': miFormulario})
 
 
+
+
+@login_required # Con esto nos aseguramos que el usuario esté autenticado
 def formulario_items_gastos(request):
 
     
@@ -48,7 +53,7 @@ def formulario_items_gastos(request):
             nueva_categoria_nombre = datos_formulario.get('nueva_categoria')
             
             if nueva_categoria_nombre:
-                nueva_categoria = CategoriaGasto(nombre=nueva_categoria_nombre)
+                nueva_categoria = CategoriaGasto(nombre=nueva_categoria_nombre, usuario=request.user)
                 nueva_categoria.save()
 
             
@@ -58,7 +63,7 @@ def formulario_items_gastos(request):
             nombre=datos_formulario['nombre'],
             monto=datos_formulario['monto'],
             categoria=categoria,  # Asociar el item a la categoría seleccionada
-            fecha=datos_formulario['fecha']
+            fecha=datos_formulario['fecha'], usuario=request.user
             )
             item_gasto.save()
             return redirect("ListaGastos")
@@ -78,18 +83,16 @@ def categorias(request):
     return render(request, 'lista_categorias.html', {'lista_categorias': categorias})
 
 
-
+@login_required
 def formulario_meta_ahorro(request):
 
     
     if request.method == 'POST':
-        
         miFormulario = MetaAhorroFormulario(request.POST)
-        
         if miFormulario.is_valid():
-            
             datos_formulario = miFormulario.cleaned_data
-            meta_ahorro = MetaAhorro(nombre=datos_formulario['nombre'], monto_objetivo=datos_formulario['monto_objetivo'], fecha_limite=datos_formulario['fecha_limite'])
+            usuario = request.user 
+            meta_ahorro = MetaAhorro(nombre=datos_formulario['nombre'], monto_objetivo=datos_formulario['monto_objetivo'], fecha_limite=datos_formulario['fecha_limite'], usuario = usuario)
             meta_ahorro.save()
             return redirect("ListaGastos")
         
@@ -120,11 +123,16 @@ def buscar(request):
 
 
 
-
+@login_required
 def lista_gastos(request):
     
-    gastos = ItemGasto.objects.all()
+    if request.user.is_authenticated:
+            
+        gastos = ItemGasto.objects.filter(usuario=request.user)
     
+    else: 
+        gastos = [] 
+        
     return render(request, 'lista_gastos.html', {'gastos': gastos})
 
     
