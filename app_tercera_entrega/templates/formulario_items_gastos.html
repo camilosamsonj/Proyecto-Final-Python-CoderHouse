@@ -8,24 +8,35 @@
 </br>
 <div class="contenido">
 
+{% if user.is_authenticated %}
+
+<!-- -->
 <form action="" method="POST"> {% csrf_token %} 
        
-        <table>
+        <table class="form-control">
             {{ miFormulario.as_table}}
         </table>
-        <br>
         <div class="footer">
             <input class="boton_input" type="submit" value="Guardar">
             <a href="{% url 'ListaGastos' %}">
                 <button type="button" class="boton_input"> Lista de Gastos </button>
             </a>
         </div>
-        
-        
-
     </form>
-
 </div>
+
+{% else %}
+
+        <h1>Debes Registrarte o Iniciar sesión para registrar un gasto </h1>
+
+        <button> <a href="{% url 'Registro'%}">Registrar Nuevo Usuario</a></button>
+        <button> <a href="{% url 'Login'%}">Iniciar Sesión</a></button>
+        
+
+
+{% endif %}
+
+
     
 
 
