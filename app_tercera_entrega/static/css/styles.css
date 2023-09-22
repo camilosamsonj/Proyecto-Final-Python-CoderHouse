@@ -1,16 +1,40 @@
 
 /*Estilos propios, no correspondientes al Template Base de StartBoostrap */
+.bienvenido{
+  color: white;
+}
+nav{
+  background-color: cyan;
+}
 li {
   list-style: none;
+  width: 100%;
+  display: block;
+}
+li:hover{
+  background-color: #e8dfdf;
+}
+a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+a:active{
+  color: white;
+}
+a:hover{
+  color: white;
 }
 #cerrar-sesion{
   display: flex;
   justify-content: flex-end;
 }
 .sidebar {
+  display:flex;
   height: 60vh;
   background-color: cyan;
-  padding: 20px;
+  padding-top: 40px;
+  justify-content: center;
 }
 .contenido {
   background-color: white;
@@ -26,13 +50,28 @@ footer {
   background-image: url("hero-bg.jpg");
   background-size: cover; 
   background-position: center center; 
-  width: 100%; /* Asegura que el elemento .hero ocupe el 100% del ancho disponible */
+  width: 100%; 
   text-align: center;
   background-color: aquamarine;
   height: 30vh;
   justify-content: center;
   align-items: center;
 }
+/* @media screen and (max-width: 768px){
+  .hero {
+    display: flex;
+    background-image: none;
+    height: 10vh;
+    background-color: olivedrab;
+    color: white;
+  }
+  .sidebar{
+    height: 20vh;
+    padding-top: 10px;
+    padding-bottom: 0;
+  } */
+  
+/* } */
 .nombre-usuario {
   color: white;
 }
