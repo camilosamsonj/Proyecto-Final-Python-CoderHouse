@@ -31,4 +31,4 @@ class MetaAhorro(models.Model):
     
     
 
-    
+     

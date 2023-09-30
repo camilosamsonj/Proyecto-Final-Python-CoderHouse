@@ -2,25 +2,35 @@
 
 {% block contenido_variable %}
 
-    <div class="header">
-        <h4 class="titulos_formularios">Metas de ahorro</h4>
-    </div>
 
-    <div class="contenido">
-            <form action="" method="POST"> {% csrf_token %} 
+    <form  method="post">
+    {% csrf_token %} 
+
+    <fieldset>
+        <legend>Metas de Ahorro</legend>
        
-        <table>
-            {{ miFormulario.as_table}}
-        </table>
-        <br>
-        <div class="footer">
-            
-            <input class="boton_input" type="submit" value="Guardar">
+       <div class="mb-3">
+           <label class="form-label" for="{{miFormulario.nombre.id_for_label}}">{{miFormulario.nombre.label_tag}}</label>
+           <input type="text" class="form-control" name="{{ miFormulario.nombre.name }}" value="{{ miFormulario.nombre.value}}">
+       </div>
 
+       <div class="mb-3">
+           <label class="form-label" for="{{ miFormulario.monto_objetivo.id_for_label }}">{{ miFormulario.monto_objetivo.label_tag }}</label>
+           <input type="text" class="form-control" name="{{ miFormulario.monto_objetivo.name }}" value="{{ miFormulario.monto_objetivo.value}}">
+       </div>
+
+       <div class="mb-3">
+        <label class="form-label" for="{{ miFormulario.fecha_limite.id_for_label }}">{{ miFormulario.fecha_limite.label_tag }}</label>
+        <input type="date" class="form-control" name="{{ miFormulario.fecha_limite.name }}" value="{{ miFormulario.fecha_limite.value}}">
         </div>
-    </form>
-    </div>
+    </fieldset>
+       
 
+    
+       
+        <input class="btn btn-primary" type="submit" value="Guardar">
+
+   </form>
 
 
 {% endblock contenido_variable %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block contenido_variable %}
+
+<form class="container justify-content-center" action="" method="POST">
+                     {% csrf_token %}
+    <fieldset>
+
+        <legend>Editar perfil: <em>{{usuario}}</em></legend>
+   
+   <div class="mb-3">
+       <label class="form-label" for="{{miFormulario.email.id_for_label}}">{{miFormulario.email.label_tag}}</label>
+       <input type="text" class="form-control" name="{{ miFormulario.email.name }}" value="{{ miFormulario.email.value}}">
+   </div>
+
+   <div class="mb-3">
+       <label class="form-label" for="{{ miFormulario.password1.id_for_label }}">{{ miFormulario.password1.label_tag }}</label>
+       <input type="text" class="form-control" name="{{ miFormulario.password1.name }}" value="{{ miFormulario.password1.value}}">
+   </div>
+
+   <div class="mb-3">
+    <label class="form-label" for="{{ miFormulario.password2.id_for_label }}">{{ miFormulario.password2.label_tag }}</label>
+    <input type="text" class="form-control" name="{{ miFormulario.password2.name }}" value="{{ miFormulario.password2.value}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary"> Guardar Cambios </button>
+
+    </form> 
+
+
+{% endblock contenido_variable %}

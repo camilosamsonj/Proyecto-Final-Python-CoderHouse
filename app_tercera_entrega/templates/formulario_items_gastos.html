@@ -2,43 +2,39 @@
 
 {% block contenido_variable %}
 
-<div class="header">
-    <h4 class="titulos_formularios">Registro de Gastos</h4>
-</div>
-</br>
-<div class="contenido">
 
-{% if user.is_authenticated %}
 
 <!-- -->
-<form action="" method="POST"> {% csrf_token %} 
-       
-        <table class="form-control">
-            {{ miFormulario.as_table}}
-        </table>
-        <div class="footer">
-            <input class="boton_input" type="submit" value="Guardar">
-            <a href="{% url 'ListaGastos' %}">
-                <button type="button" class="boton_input"> Lista de Gastos </button>
-            </a>
-        </div>
-    </form>
-</div>
+<form action="" method="POST" class="container justify-content-center"> 
 
-{% else %}
+    {% csrf_token %} 
+<legend>Registro de Gastos </legend>
 
-        <h1>Debes Registrarte o Iniciar sesión para registrar un gasto </h1>
-
-        <button> <a href="{% url 'Registro'%}">Registrar Nuevo Usuario</a></button>
-        <button> <a href="{% url 'Login'%}">Iniciar Sesión</a></button>
-        
-
-
-{% endif %}
-
-
-    
-
+    <div class="mb-3">
+        <label class="form-label" for="{{miFormulario.nombre.id_for_label}}">{{miFormulario.nombre.label_tag}}</label>
+        <input type="text" class="form-control" name="{{ miFormulario.nombre.name }}" value="{{ miFormulario.nombre.value}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="{{miFormulario.monto.id_for_label}}">{{miFormulario.monto.label_tag}}</label>
+        <input type="text" class="form-control" name="{{ miFormulario.monto.name }}" value="{{ miFormulario.monto.value}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="{{ miFormulario.categoria.name }}">{{ miFormulario.categoria.label_tag }}</label>
+        <select class="form-control" name="{{ miFormulario.categoria.name }}">
+            {% for value, label in miFormulario.categoria.choices %}
+                <option value="{{ value }}" {% if value == miFormulario.categoria.value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="{{miFormulario.fecha.id_for_label}}">{{miFormulario.fecha.label_tag}}</label>
+        <input type="date" class="form-control" name="{{ miFormulario.fecha.name }}" value="{{ miFormulario.fecha.value}}">
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar gasto</button>
+</form>
+    {% for choice in miFormulario.categoria.choices %}
+    <p>Valor: {{ choice.0 }}, Texto: {{ choice.1 }}</p> 
+    {% endfor %}
 
 
 {% endblock contenido_variable %}

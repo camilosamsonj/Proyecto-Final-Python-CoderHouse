@@ -2,15 +2,25 @@
 
 
 {% block contenido_variable %}
+<div class="container">
+    <div class="row">
+        <legend> Escoge una opción </legend>
+    </div>
+    <div class="container-col-md-4">
+            <button class="btn btn-primary"> <a href="{% url 'Registro'%}">Registrar Nuevo Usuario</a></button>
+            <button class="btn btn-secondary"> <a href="{% url 'Login'%}">Iniciar Sesión</a></button>
+    </div>
+   
+    <br>
+    <div class="row">
+       
+    </div>
+        
+    
+        
+    
+</div>
 
-<fieldset>
-    <legend> Escoge una opción </legend>
-
-    <button> <a href="{% url 'Registro'%}">Registrar Nuevo Usuario</a></button>
-    <button> <a href="{% url 'Login'%}">Iniciar Sesión</a></button>
-    <button> <a href="{% url 'Registro'%}"></a></button>
-
-</fieldset>
 
 
 {% endblock contenido_variable %}

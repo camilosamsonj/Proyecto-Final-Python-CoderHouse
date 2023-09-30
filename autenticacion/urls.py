@@ -7,6 +7,6 @@ urlpatterns = [
     path('registro-usuario', registro, name='Registro'),
     path('login', login_request, name='Login'),
     path('logout', LogoutView.as_view(template_name='logout.html', next_page='Registro'), name='Logout'),
-    
+    path('editar-perfil', editar_perfil, name='EditarPerfil')
     # Otros patrones de URL
 ]

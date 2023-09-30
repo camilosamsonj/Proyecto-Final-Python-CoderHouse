@@ -14,12 +14,23 @@ class FormularioRegistroUsuarios(UserCreationForm):
     class Meta:
         model = User
         fields=['username', 'email', 'password1', 'password2']
-        
-        #Quitar los mensajes de ayuda
-        
+          
         help_texts = {k:"" for k in fields}
         
     # Personalizar la etiqueta del campo "username"
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].label = 'Nombre de usuario'
+
+class UserEditForm(UserCreationForm):
+    email = forms.EmailField(label="Modificar e-mail")
+    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput, initial='')
+    password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput, initial='')
+    nombre = forms.CharField()
+    apellido = forms.CharField()
+    
+    class Meta:
+        model = User
+        fields = ['email', 'password1', 'password2', 'nombre', 'apellido']
+        help_texts = {k:"" for k in fields}
+        
