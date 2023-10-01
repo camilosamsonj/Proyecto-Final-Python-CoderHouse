@@ -2,7 +2,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .views import *
 from django import forms 
+from .models import Avatar
 
+
+class MesAnioWidget(forms.DateInput):
+    input_type = 'date'
 
 class FormularioRegistroUsuarios(UserCreationForm):
     
@@ -28,9 +32,18 @@ class UserEditForm(UserCreationForm):
     password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput, initial='')
     nombre = forms.CharField()
     apellido = forms.CharField()
+    fecha_nacimiento = forms.DateField(widget=MesAnioWidget)
     
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2', 'nombre', 'apellido']
+        fields = ['email', 'password1', 'password2', 'nombre', 'apellido', 'fecha_nacimiento']
         help_texts = {k:"" for k in fields}
         
+class AvatarFormulario(forms.ModelForm):
+    
+    class Meta:
+        model = Avatar
+        fields = ('imagen',)
+    
+    
+    

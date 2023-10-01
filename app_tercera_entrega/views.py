@@ -9,9 +9,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-def inicio(request):
-
-    return render(request, "inicio.html")
+# def inicio(request):
+#     usuario_actual = request.user
+#     return render(request, "inicio.html", {'usuario_actual': usuario_actual})
 
 @login_required 
 def formulario_categorias(request):
@@ -75,7 +75,7 @@ def formulario_items_gastos(request):
     
     return render(request, 'formulario_items_gastos.html', {'miFormulario': miFormulario})
 
-
+@login_required
 def categorias(request):
     
     categorias = CategoriaGasto.objects.all()

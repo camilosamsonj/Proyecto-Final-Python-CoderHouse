@@ -3,19 +3,17 @@
 
 {% block contenido_variable %}
 
-<div>
-<fieldset style="max-width: 70%M">
-    <legend> <em>Crear nuevo usuario</em> </legend>
+<div class="container-md ">
 
     <form action="" method="POST">
-
+        <legend> <em>Crear nuevo usuario</em> </legend>
         {% csrf_token %}
-    
-        {{miFormulario.as_p}}
-        <button type="submit"> Regístrate </button>
-    
+        <table class="table table-light">
+            {{miFormulario.as_table}}
+        </table>
+        
+        <button class="btn btn-primary" type="submit"> Regístrate </button>
     </form> 
-</fieldset>
 </div>
 
 

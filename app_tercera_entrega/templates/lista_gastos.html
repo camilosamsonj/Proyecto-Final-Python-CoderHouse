@@ -2,28 +2,32 @@
 
 {% block contenido_variable %}
 
-    <div class="contenido">
-    <div class="header">
-        <h4 class="titulos_formularios">Lista de gastos</h4>
-    </div>
+   <div class="container-md">
 
-     <ul class="lista_resultados">
-        {% for gasto in gastos %} 
-            <ul>
-                <li class="objetos_lista_resultados" > <span> <u>Item Gasto:</u> </span><p class="item_destacado">{{gasto.nombre}}</p>
-                    <span> <u>Valor:</u> </span><p class="item_destacado">{{gasto.monto}}</p>
-                    <span><u>Categoria:</u> </span><p class="item_destacado">{{gasto.categoria}}</p>
-                    <span><u>Fecha:</u> </span><p class="item_destacado">{{gasto.fecha}}</p>
-                </li>
+        <table class="table table-primary">
 
-            </ul>
-        {% endfor %}
-    </ul>   </div>
-
-    <div class="footer">
-
-       
-    <a class="boton_input" href="{% url 'FormularioItems'%}">Registrar Gasto</a>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Monto</th>
+                    <th>Categoría</th>
+                    <th>Fecha Gasto</th>   
+                </tr>
+            </thead>
+            <tbody>
+                {% for gasto in gastos %} 
+                <tr class="table-light">
+                    <td>{{gasto.nombre}}</td>
+                    <td>{{gasto.monto}}</td>
+                    <td>{{gasto.categoria}}</td>
+                    <td>{{gasto.fecha}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+               
+        <a class="btn btn-secondary" href="{% url 'FormularioItems'%}">Registrar Gasto</a>       
+            
     </div>
 
 

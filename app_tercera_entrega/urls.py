@@ -5,7 +5,6 @@ from .views import *
 
 
 urlpatterns = [
-    path('', inicio, name='Inicio'),
     path('lista-categorias/', categorias, name='Categorias' ),
     path('formulario-categorias/', formulario_categorias, name='FormularioCategorias' ),
     path('formulario-items/', formulario_items_gastos, name='FormularioItems' ),
