@@ -2,32 +2,22 @@
 
 {% block contenido_variable %}
 
-<div class="header">
-    <h4 class="titulos_formularios">Registro de Gastos</h4>
-</div>
-</br>
-<div class="contenido">
-
-<form action="" method="POST"> {% csrf_token %} 
-       
-        <table>
-            {{ miFormulario.as_table}}
-        </table>
-        <br>
-        <div class="footer">
-            <input class="boton_input" type="submit" value="Guardar">
-            <a href="{% url 'ListaGastos' %}">
-                <button type="button" class="boton_input"> Lista de Gastos </button>
-            </a>
-        </div>
-        
-        
-
-    </form>
-
-</div>
-    
 
 
+<!-- -->
+<form action="" method="POST" class="container d-flex justify-content-center"> 
+    {% csrf_token %} 
+    <div class="container">
+        <div class="row">
+            <table class="table table-light col-12">
+                {{miFormulario.as_table}}
+            </table>
+            <div class="col-12">
+               <input class="btn btn-primary" type="submit" value="Registrar Gasto">  
+            </div>      
+            
+        </div>   
+    </div>
 
+</form>
 {% endblock contenido_variable %}

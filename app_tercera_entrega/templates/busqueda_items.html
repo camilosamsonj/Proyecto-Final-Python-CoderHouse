@@ -2,24 +2,20 @@
 
 {% block contenido_variable %}
 
-    <div class="header"> <h4 class="titulos_formularios">Buscar Elementos</h4> </div>
-    <p class="titulos_formularios">
-        Ingresa el nombre del elemento que quieres buscar: </b>
-    </p>
+   
+       <fieldset>
+            <form action="buscar/" method="GET"> 
+                <div></div>
+                <legend> Ingresa el nombre de un item para buscar </legend>
 
-    <div class="contenido">
-
-    <form action="buscar/" method="GET"> 
+                <input type="text" name="item" id="item">
+                    
+                <div>
+                        <input class="btn btn-primary" type="submit" value="Buscar">
+                </div>
+            </form>
+       </fieldset>
     
-        <input type="text" name="item" id="item">
-        <div>
-            <input class="boton_input" type="submit" value="Buscar">
-        </div>
-       
-
-    </form>
-
-    </div>
 
     
 

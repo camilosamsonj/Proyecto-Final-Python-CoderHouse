@@ -1,16 +1,68 @@
 {% extends 'base.html' %}
 
-
 {% block contenido_variable %}
 
-<fieldset>
-    <legend> Escoge una opción </legend>
+{% if not request.user.is_authenticated %}
+<div class="container-md text-center">
+    <br>
+    <h2>Bienvenido a tu aplicación de control de Finanzas </h2>      
+    <div class="container-md">
 
-    <button> <a href="{% url 'Registro'%}">Registrar Nuevo Usuario</a></button>
-    <button> <a href="{% url 'Login'%}">Iniciar Sesión</a></button>
-    <button> <a href="{% url 'Registro'%}"></a></button>
+    <h3> <a class="btn btn-primary" href="{% url 'Registro' %}">Regístrate</a> o <a class="btn btn-secondary" href="{% url 'Login' %}">Inicia Sesión</a> para comenzar a usar la App</h3>
+    
 
-</fieldset>
+    </div>
+</div>
+</div>
+{% endif %}
 
+{% if request.user.is_authenticated %}
 
+    <div class="container text-center">
+        <h1>Bienvenido a tu aplicación de control de Finanzas </h1>      
+        <div class="container">
+
+        
+        <div class="row">
+            <div class="col-9">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID #</th>
+                            <th>Nombre de usuario</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <tr>
+                            <td>{{user.id}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+       
+                        </tr>
+                    </tbody>
+                </table>
+                
+                    <a class="btn btn-primary" href="{% url 'EditarPerfil' %}">Editar Datos</a>
+                
+            </div>
+            <div class="col-3"> 
+                {% if url_avatar %} 
+                
+                <img src="{{url_avatar}}" class="img-thumbnail" alt="">
+                
+                <a class="btn btn-primary" href="{% url 'AgregarAvatar' %}">Modificar Avatar</a>
+
+                {% else %}
+                <img src="https://static.vecteezy.com/system/resources/previews/020/646/716/non_2x/empty-face-icon-avatar-with-black-hair-illustration-vector.jpg" class="img-thumbnail" alt="Avatar">
+                <a class="btn btn-primary" href="{% url 'AgregarAvatar' %}">Modificar Avatar</a>
+                {% endif %} 
+            </div>
+    
+    
+        </div>
+    </div>
+    </div>
+
+{% endif %}
 {% endblock contenido_variable %}

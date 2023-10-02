@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block contenido_variable %}
+<div class="container-md">
+    <form class="table" action="" method="POST">
+ 
+        {% csrf_token %}
+        <table class="table table-light">
+            {{miFormulario.as_table}}
+        </table>
+        <button  class="btn btn-primary" type="submit"> Guardar </button>
+    </form>
+</div>
+
+
+{% endblock contenido_variable %}

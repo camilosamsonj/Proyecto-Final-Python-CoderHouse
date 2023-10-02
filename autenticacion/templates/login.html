@@ -2,18 +2,20 @@
 
 
 {% block contenido_variable %}
+<div class="container">
+    <fieldset>
+        <legend>Ingresa tus datos para iniciar sesión</legend>
+         <form action="" method="POST">
+         {% csrf_token %}
+     
+         {{miFormulario.as_p}}
+     
+         <button  class="btn btn-primary" type="submit"> Iniciar Sesión </button>
+         
+         </form>
+     </fieldset>
+</div>
 
-<fieldset>
-   <legend>Ingresa tus datos para iniciar sesión</legend>
-    <form action="" method="POST">
-    {% csrf_token %}
-
-    {{miFormulario.as_p}}
-
-    <button type="submit"> Iniciar Sesión </button>
-    
-    </form>
-</fieldset>
 
 
 {% endblock contenido_variable %}

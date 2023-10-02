@@ -23,12 +23,12 @@ class ItemGasto(models.Model):
     def __str__(self):
         return self.nombre
 
-class MetaAhorro(models.Model):
-    nombre = models.CharField(max_length=100)
-    monto_objetivo = models.IntegerField()
-    fecha_limite = models.DateField()
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+# class MetaAhorro(models.Model):
+#     nombre = models.CharField(max_length=100)
+#     monto_objetivo = models.IntegerField()
+#     fecha_limite = models.DateField()
+#     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     
     
 
-    
+     

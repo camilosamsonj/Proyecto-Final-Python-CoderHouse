@@ -2,28 +2,52 @@
 
 {% block contenido_variable %}
 
-    <div class="contenido">
-    <div class="header">
-        <h4 class="titulos_formularios">Lista de gastos</h4>
-    </div>
+   <div class="container-md">
 
-     <ul class="lista_resultados">
-        {% for gasto in gastos %} 
-            <ul>
-                <li class="objetos_lista_resultados" > <span> <u>Item Gasto:</u> </span><p class="item_destacado">{{gasto.nombre}}</p>
-                    <span> <u>Valor:</u> </span><p class="item_destacado">{{gasto.monto}}</p>
-                    <span><u>Categoria:</u> </span><p class="item_destacado">{{gasto.categoria}}</p>
-                    <span><u>Fecha:</u> </span><p class="item_destacado">{{gasto.fecha}}</p>
-                </li>
+    {% if gastos %}
 
-            </ul>
-        {% endfor %}
-    </ul>   </div>
+        <table class="table table-primary">
 
-    <div class="footer">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Monto</th>
+                    <th>Categoría</th>
+                    <th>Fecha Gasto</th>   
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gasto in gastos %} 
+                <tr class="table-light">
+                    <td>{{gasto.nombre}}</td>
+                    <td>{{gasto.monto}}</td>
+                    <td>{{gasto.categoria}}</td>
+                    <td>{{gasto.fecha}}</td>
+                    <td>
+                        <!-- Enlace para editar -->
+                        <a class="btn btn-primary" href="{% url 'editar_gasto' gasto.id %}" >Editar</a>
+                        <!-- Enlace para eliminar -->
+                        <a class="btn btn-danger" href="{% url 'eliminar_gasto' gasto.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            {% else %}
 
-       
-    <a class="boton_input" href="{% url 'FormularioItems'%}">Registrar Gasto</a>
+            <div class="card">
+                <img src="/static/css/fondo-card.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Aún no has registrado gastos </h5>
+                  <p class="card-text">Haz click en el botón registrar gastos para comenzar a utilizar la app.</p>
+                  <a href="{% url 'FormularioItems' %}" class="btn btn-primary">Registrar Gasto</a>
+                </div>
+              </div>
+            
+              {% endif %}
+
+            
     </div>
 
 

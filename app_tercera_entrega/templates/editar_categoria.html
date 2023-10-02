@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block contenido_variable %}
+   <div class="container-md">
+      <h2>Editar Categoría</h2>
+      <form method="post" action="{% url 'editar_categoria' pk=categoria.id %}">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit">Guardar Cambios</button>
+      </form>
+      <a href="{% url 'Categorias' %}">Cancelar</a>
+   </div>
+{% endblock contenido_variable %}

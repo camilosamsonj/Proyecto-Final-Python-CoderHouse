@@ -1,0 +1,16 @@
+{% comment %} {% extends 'base.html' %}
+
+{% block contenido_variable %}
+
+    <div class="container">
+        <h2>Contacto</h2>
+        <form method="post" action="{% url 'enviar_correo' %}">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+{% endblock contenido_variable %} {% endcomment %}

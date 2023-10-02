@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block contenido_variable %}
+   <div class="container-md">
+    <h2>Editar Gasto</h2>
+    <form method="post" action="{% url 'editar_gasto' pk=gasto.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'ListaGastos' %}">Volver a la lista de gastos</a>
+    </div>
+{% endblock contenido_variable %}

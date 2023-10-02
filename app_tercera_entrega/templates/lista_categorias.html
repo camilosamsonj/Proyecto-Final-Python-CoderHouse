@@ -1,23 +1,41 @@
 {% extends 'base.html' %}
 
 {% block contenido_variable %}
+            
 
-    <div class="contenido">
-    <div class="header">
-        <h4 class="titulos_formularios">Categorías de Gastos</h4>
-    </div>
+        <div class="container">
+            <div class="row">
+                <h4 class="col-6">Categorías de Gastos</h4>
+                
+                <div class="col-6 d-flex justify-content-end">
+                    <a class="btn btn-primary d-inline-block" href="{% url 'FormularioCategorias'%}">Nueva Categoría</a>
+                </div>
+                
+            </div>
+            <div class="row">
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categoria in lista_categorias %} 
+                        <tr>
+                            <td>{{categoria.nombre}}</td>
+                            <td>{{categoria.descripcion}}</td>
+                            <td><a class="btn btn-primary" href="{% url 'editar_categoria' pk=categoria.id %}">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminar_categoria' pk=categoria.id %}">Eliminar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
-     <ul class="lista_resultados">
-        {% for categoria in lista_categorias %} 
-            <li class="objetos_lista_resultados" ><span class="item_destacado">{{categoria.nombre}}</span>: <p style="font-style: italic;">{{categoria.descripcion}}</p></li>
-        {% endfor %}
-    </ul>   </div>
-
-    <div class="footer">
-
-       
-    <a class="boton_input" href="{% url 'FormularioCategorias'%}">Nueva Categoría</a>
-    </div>
+        
+        </div>
 
 
 {% endblock contenido_variable %}

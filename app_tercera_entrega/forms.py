@@ -1,6 +1,5 @@
 from django import forms 
-from .models import ItemGasto, CategoriaGasto, MetaAhorro
-from django.contrib.auth.forms import UserCreationForm
+from .models import ItemGasto, CategoriaGasto
 from django.contrib.auth.models import User
 from .views import *
 
@@ -10,6 +9,9 @@ class CategoriaGastoFormulario(forms.ModelForm):
     class Meta:
         model = CategoriaGasto
         fields = ['nombre', 'descripcion']
+    
+    nombre = forms.CharField(widget=forms.TextInput(), label='Nombre', initial='')
+    descripcion = forms.CharField(widget=forms.TextInput(), label='Descripcion', initial='')
 
 class MesAnioWidget(forms.DateInput):
     input_type = 'date'
@@ -20,7 +22,7 @@ class ItemGastoFormulario(forms.ModelForm):
     class Meta:
         model = ItemGasto
         fields = ['nombre', 'monto', 'categoria', 'fecha']
-        
+    
     def clean(self):
         cleaned_data = super().clean()
         categoria = cleaned_data.get('categoria')
@@ -30,23 +32,28 @@ class ItemGastoFormulario(forms.ModelForm):
             raise forms.ValidationError('Debes seleccionar una categoría o ingresar una nueva')
         
         return cleaned_data
-        
-    categoria = forms.ModelChoiceField(queryset=CategoriaGasto.objects.all(), empty_label='Selecciona una categoría')
+
+    nombre = forms.CharField(label='Nombre del gasto', initial='')
+    monto = forms.CharField(label='Monto', initial='')    
+    categoria = forms.ModelChoiceField(
+        queryset=CategoriaGasto.objects.all(), 
+        empty_label='Selecciona una categoría existente', 
+        required=False
+        )
     fecha = forms.DateField(widget=MesAnioWidget)
 
-    
-class MetaAhorroFormulario(forms.ModelForm):
-        
+class ItemGastoForm(forms.ModelForm):
     class Meta:
-        model = MetaAhorro
-        fields = ['nombre', 'monto_objetivo', 'fecha_limite']
-        
-    fecha_limite = forms.DateField(widget=MesAnioWidget)
-    
+        model = ItemGasto
+        fields = ['nombre', 'monto', 'categoria', 'fecha']
 
-                    
-        
-    
+class EditCategoriaForm(forms.ModelForm):
+    class Meta:
+        model = CategoriaGasto
+        fields = ['nombre', 'descripcion']
 
-        
 
+class ContactForm(forms.Form):
+    nombre = forms.CharField(label='Nombre', max_length=100)
+    correo = forms.EmailField(label='Correo electrónico')
+    mensaje = forms.CharField(label='Mensaje', widget=forms.Textarea)

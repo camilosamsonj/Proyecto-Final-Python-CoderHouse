@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,6 +54,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'proyecto_coder.urls'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 TEMPLATES = [
     {
@@ -123,3 +129,22 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# LOGIN_URL = '/autenticacion/login/'
+
+
+# Configuración del servidor de correo saliente (SMTP) de Outlook
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.office365.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+# EMAIL_HOST_USER = 'djangocamilosamson@outlook.com'  # Cambiar por tu dirección de correo de Outlook
+# EMAIL_HOST_PASSWORD = 'django1234'  # Cambiar por tu contraseña
+# # EMAIL_USE_SSL = False
+
+# # # Configuración adicional para el servidor de correo
+# # DEFAULT_FROM_EMAIL = 'djangocamilosamson@outlook.com'  # Cambiar por tu dirección de correo de Outlook
+# # SERVER_EMAIL = 'djangocamilosamson@outlook.com'  # Cambiar por tu dirección de correo de Outlook
+# CONTACT_EMAIL = 'djangocamilosamson@outlook.com'
