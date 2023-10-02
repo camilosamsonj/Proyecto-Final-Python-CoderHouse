@@ -3,10 +3,10 @@
       <a class="navbar-brand" href="{% url 'Home' %}">Inicio</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if request.user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="#">link1</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">link2</a></li>      
+          <a class="nav-link" href="{% url 'EditarPerfil'%}">Editar Perfil</a></li>
+          {% endif %}  
         </ul>
         {% if request.user.is_authenticated %}
         <ul class="navbar-nav-ms-auto mb-2 mb-lg-0">
@@ -16,10 +16,10 @@
         {% endif %}
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a></li>      
-          </ul>
+            <a class="nav-link" href="{% url 'About' %}">About</a></li>
+          {% comment %} <li class="nav-item">
+            <a class="nav-link" href="{% url 'enviar_correo'%}">Contacto</a></li>      
+          </ul> {% endcomment %}
         </ul>
         </div>
       </div>  

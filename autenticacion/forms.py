@@ -30,13 +30,10 @@ class UserEditForm(UserCreationForm):
     email = forms.EmailField(label="Modificar e-mail")
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput, initial='')
     password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput, initial='')
-    nombre = forms.CharField()
-    apellido = forms.CharField()
-    fecha_nacimiento = forms.DateField(widget=MesAnioWidget)
     
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2', 'nombre', 'apellido', 'fecha_nacimiento']
+        fields = ['email', 'password1', 'password2']
         help_texts = {k:"" for k in fields}
         
 class AvatarFormulario(forms.ModelForm):
@@ -45,5 +42,7 @@ class AvatarFormulario(forms.ModelForm):
         model = Avatar
         fields = ('imagen',)
     
-    
+ 
+
+       
     

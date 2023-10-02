@@ -3,8 +3,6 @@
 .bienvenido{
   color: white;
 }
-
-
 nav{
   background-color: cyan;
 }
@@ -24,26 +22,11 @@ a {
 a:active{
   color: white;
 }
+
 a:hover{
   color: white;
 }
-#cerrar-sesion{
-  display: flex;
-  justify-content: flex-end;
-}
-.sidebar {
-  display:flex;
-  height: 60vh;
-  background-color: cyan;
-  padding-top: 40px;
-  justify-content: center;
-}
 
-footer {
-  color: black;
-  background-color: greenyellow;
-  height: 10vh;
-}
 .hero {
   display: flex;
   background-image: url("hero-bg.jpg");
@@ -55,6 +38,25 @@ footer {
   height: 20vh;
   justify-content: center;
   align-items: center;
+}
+
+#cerrar-sesion{
+  display: flex;
+  justify-content: flex-end;
+}
+.sidebar {
+  display:flex;
+  height: 70vh;
+  background-color: cyan;
+  padding-top: 40px;
+  justify-content: center;
+}
+
+.contenedor-principal{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2.5rem;
 }
 
 .nombre-usuario {
@@ -70,6 +72,26 @@ footer {
   color: white;
 }
 
-.container .text-center{
-  padding: 1rem;
+footer {
+  color: black;
+  background-color: grey;
+  height: 10vh;
+}
+
+.card {
+  display: flex;
+  width: 60%;
+  height: auto;
+  text-align: center;
+}
+
+.card img{
+  width: 500px;
+  height: auto;
+  margin: 0 auto;
+}
+
+input {
+  margin: .5rem;
+
 }

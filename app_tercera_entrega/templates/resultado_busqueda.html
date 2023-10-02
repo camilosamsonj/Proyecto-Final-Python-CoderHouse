@@ -2,38 +2,37 @@
 
 {% block contenido_variable %}
 
-    <div class="header"> <h4 class="titulos_formularios">Resultado de tu búsqueda</h4> </div>
-    
-    <div class="contenido">
-        <p style="display: inline;" class="titulos_formularios">Estás buscando el item :</p>
-        <span class="item_destacado">"{{item_nombre}}"</span> 
+<div class="container">
+
+    <div class="row">
+        <u><h4 class="titulos_formularios">Resultado de tu búsqueda</h4></u>
     </div>
-        
-    
-    <div class="contenido">
+    <div class="row">
+        <div class="col-3">
+            <p>Estás buscando el item : <b><em>{{item_nombre}}</em></b></p>
+        </div>
         {% for resultado in resultados %}
-        <ul class="lista_resultados">   
-
-            <li class="objetos_lista_resultados"> 
-            <span> <u>Valor:</u> <span class="item_destacado"> {{ resultado.monto }}</span></span>
-            </li> 
-
-            <li class="objetos_lista_resultados"> 
-            <span> <u>Categoría: </u> <span class="item_destacado"> {{ resultado.categoria }}</span></span>
-            </li> 
-
-            <li class="objetos_lista_resultados"> 
-            <span> <u>Fecha:</u> <span class="item_destacado"> {{ resultado.fecha }}</span></span>
-            </li> 
-        
-        </ul>     
+        <ul class="container col-8">   
+            <div class="row">
+                <li class="col-4"> 
+                    <span> <u>Valor:</u> <span class="item_destacado"> {{ resultado.monto }}</span></span>
+                </li>
+                <li class="col-4"> 
+                    <span> <u>Categoría: </u> <span class="item_destacado"> {{ resultado.categoria }}</span></span>
+                </li>
+                <li class="col-4"> 
+                    <span> <u>Fecha:</u> <span class="item_destacado"> {{ resultado.fecha }}</span></span>
+                </li>   
+            </div> 
+        </ul>
                 
-        {% endfor %}
+    {% endfor %}
+    </div>
 
-            </div>
+       
 
-            <div class="footer">
-                <a class="boton" href="{% url 'BusquedaItems'%}">Buscar Otro</a>
+            <div >
+                <a class="btn btn-primary" href="{% url 'BusquedaItems'%}">Buscar Otro</a>
             </div>
           
 

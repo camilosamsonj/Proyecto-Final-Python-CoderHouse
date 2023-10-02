@@ -6,5 +6,4 @@ from autenticacion.models import Avatar
 
 admin.site.register(CategoriaGasto)
 admin.site.register(ItemGasto)
-admin.site.register(MetaAhorro)
 admin.site.register(Avatar)

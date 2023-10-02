@@ -2,27 +2,34 @@
 
 {% block contenido_variable %}
 
-
-
-
-            <form  method="post">
-            
-            
-                 {% csrf_token %} 
-
-                <div class="mb-3">
-                    <label class="form-label" for="{{miFormulario.nombre.id_for_label}}">{{miFormulario.nombre.label_tag}}</label>
-                    <input type="text" class="form-control" name="{{ miFormulario.nombre.name }}" value="{{ miFormulario.nombre.value}}">
+            <div class="container-fluid">
+                <div class="row">
+                    <h1>Ingresar nueva categoría </h1>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="{{ miFormulario.descripcion.id_for_label }}">{{ miFormulario.descripcion.label_tag }}</label>
-                    <input type="text" class="form-control" name="{{ miFormulario.descripcion.name }}" value="{{ miFormulario.descripcion.value}}">
-
-                </div>
-             
+                <div class="row">
+                    <form  method="post">
                 
-                 <input class="btn btn-primary" type="submit" value="Guardar">
+                        {% csrf_token %} 
+       
+                       <div class="mb-3">
+                           <label class="form-label" for="{{miFormulario.nombre.id_for_label}}">{{miFormulario.nombre.label_tag}}</label>
+                           <input type="text" class="form-control" name="{{ miFormulario.nombre.name }}" value="{{ miFormulario.nombre.value}}">
+                       </div>
+                       <div class="mb-3">
+                           <label class="form-label" for="{{ miFormulario.descripcion.id_for_label }}">{{ miFormulario.descripcion.label_tag }}</label>
+                           <input type="text" class="form-control" name="{{ miFormulario.descripcion.name }}" value="{{ miFormulario.descripcion.value}}">
+       
+                       </div>
+                    
+                       
+                        <input class="btn btn-primary" type="submit" value="Guardar">
+       
+                   </form>
+       
 
-            </form>
+                </div>
+            
 
+
+            
 {% endblock contenido_variable %}

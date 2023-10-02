@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block contenido_variable %}
+   <div class="container-md">
+    <h2>Confirmar Eliminación</h2>
+    <p>¿Estás seguro de que deseas eliminar este gasto?</p>
+    <form method="post" action="{% url 'eliminar_gasto' pk=gasto.id %}">
+        {% csrf_token %}
+        <button type="submit">Sí, Eliminar</button>
+    </form>
+    <a href="{% url 'ListaGastos' %}">Cancelar</a>
+    </div>
+{% endblock contenido_variable %}

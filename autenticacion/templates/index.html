@@ -5,10 +5,10 @@
 {% if not request.user.is_authenticated %}
 <div class="container-md text-center">
     <br>
-    <h1>Bienvenido a tu aplicación de control de Finanzas </h1>      
+    <h2>Bienvenido a tu aplicación de control de Finanzas </h2>      
     <div class="container-md">
 
-    <h1>Inicia Sesion para comenzar a usar la App</h1>
+    <h3> <a class="btn btn-primary" href="{% url 'Registro' %}">Regístrate</a> o <a class="btn btn-secondary" href="{% url 'Login' %}">Inicia Sesión</a> para comenzar a usar la App</h3>
     
 
     </div>
@@ -55,6 +55,7 @@
 
                 {% else %}
                 <img src="https://static.vecteezy.com/system/resources/previews/020/646/716/non_2x/empty-face-icon-avatar-with-black-hair-illustration-vector.jpg" class="img-thumbnail" alt="Avatar">
+                <a class="btn btn-primary" href="{% url 'AgregarAvatar' %}">Modificar Avatar</a>
                 {% endif %} 
             </div>
     

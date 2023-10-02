@@ -13,5 +13,3 @@ urlpatterns = [
     path('agregar-avatar', agregarAvatar, name="AgregarAvatar")
     # Otros patrones de URL
 ]
-
-# urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

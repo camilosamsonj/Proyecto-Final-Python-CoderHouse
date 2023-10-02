@@ -4,6 +4,8 @@
 
    <div class="container-md">
 
+    {% if gastos %}
+
         <table class="table table-primary">
 
             <thead>
@@ -12,6 +14,7 @@
                     <th>Monto</th>
                     <th>Categoría</th>
                     <th>Fecha Gasto</th>   
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,12 +24,29 @@
                     <td>{{gasto.monto}}</td>
                     <td>{{gasto.categoria}}</td>
                     <td>{{gasto.fecha}}</td>
+                    <td>
+                        <!-- Enlace para editar -->
+                        <a class="btn btn-primary" href="{% url 'editar_gasto' gasto.id %}" >Editar</a>
+                        <!-- Enlace para eliminar -->
+                        <a class="btn btn-danger" href="{% url 'eliminar_gasto' gasto.id %}">Eliminar</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-               
-        <a class="btn btn-secondary" href="{% url 'FormularioItems'%}">Registrar Gasto</a>       
+            {% else %}
+
+            <div class="card">
+                <img src="/static/css/fondo-card.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Aún no has registrado gastos </h5>
+                  <p class="card-text">Haz click en el botón registrar gastos para comenzar a utilizar la app.</p>
+                  <a href="{% url 'FormularioItems' %}" class="btn btn-primary">Registrar Gasto</a>
+                </div>
+              </div>
+            
+              {% endif %}
+
             
     </div>
 

@@ -44,19 +44,18 @@
                             <li><a href="{% url 'BusquedaItems'%}">Buscar Gastos</a></li>
                             <li><a href="{% url 'FormularioCategorias'%}">Nueva Categoría</a></li>
                             <li><a href="{% url 'Categorias'%}">Mostrar Categorías</a></li>
-                            <li><a href="{% url 'FormularioMetas'%}">Metas de Ahorro</a></li>
                             
                         </ul>
                     {% else %}
                     <ul>
                         <li>
-                            <button class="btn btn-light" ><a href="{% url 'Login'%}">Regístrate</a></button>
+                            <button class="btn btn-light" ><a href="{% url 'Registro'%}">Regístrate</a></button>
                         </li>
                     </ul>
                     
                     {% endif %} 
                 </div>
-                <div class="col-md-10">
+                <div class="container col-md-10 contenedor-principal">
                     {% block contenido_variable %}
                 
                     {% endblock contenido_variable %}

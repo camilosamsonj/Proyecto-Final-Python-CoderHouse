@@ -48,11 +48,12 @@ def registro(request):
             
             username = miFormulario.cleaned_data['username'] 
             miFormulario.save()
-            return render(request, "Home", {'mensaje': 'Usuario Creado Con Éxito'})    
+            return redirect("Home")    
     else: 
             miFormulario = FormularioRegistroUsuarios()
     return render(request, 'registro.html', {'miFormulario': miFormulario})
    
+
 @login_required 
 def editar_perfil(request):
     usuario = request.user # esta es la instancia de la clase User que nos da Django
@@ -64,8 +65,6 @@ def editar_perfil(request):
             
             #datos que se modificarán
             usuario.email = informacion['email']
-            usuario.nombre = informacion['nombre']
-            usuario.apellido = informacion['apellido']
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password2']
             usuario.save()
@@ -75,6 +74,7 @@ def editar_perfil(request):
         miFormulario = UserEditForm(initial={'email':usuario.email})
         
     return render(request, 'editar_perfil.html', {"miFormulario": miFormulario, 'usuario':usuario})    
+
 
 
 def agregarAvatar(request):
